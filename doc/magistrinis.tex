@@ -87,7 +87,7 @@ The purpose of this paper was to create an improved bee population computer mode
 Bičių populiacijos kaita Europos šalyse \cite{LHC16} yra aktuali tema. Naujausi Europos komisijos tyrimai nagrinėja spartų bičių populiacijos mažėjimą bei bando paaiškinti įvairių aplinkos poveikių įtaką bičių sveikatai \cite{EFSA17a}. Didelis dėmesys skiriamas pesticidų poveikiui bitėms \cite{EFSA18} ir varozei \cite{EFSA17a}.  Dalis šių tyrimų ir projektų remia bičių stebėjimo būdus, o kompiuterinių modelių naudojimas yra pigesnė alternatyva nei visų bitynų stebėjimas. 
 Bitininkystės procesams simuliuoti yra sukurtų įvairių kompiuterinių modelių skirtingais laikotarpiais \cite{BTO13}. Vienas senesnių modelių yra BEEPOP \cite{DRL89}, modeliuojantis vienos bičių šeimos (viena motinėlė su darbininkėmis ir tranais) avilyje (lizde). Šiame modelyje bičių šeima gyvena be išorinių veiksnių, galinčių pakenkti bičių šeimos populiacijai: daroma prielaida, jog aplinkui yra maisto, jų nepuola kiti gyvūnai. Šis modelis buvo papildytas varozės procesais \cite{HoC05} tik 2004 m. Vienas sudėtingiausių bičių šeimos tipo modelių yra HoPoMo \cite{ScC07}, naudojantis 65-ias diferencialines lygtis. Šio modelio trūkumas šeimos atžvilgiu yra fiksuotas bičių amžius, modelis paskiria bitėms darbus neatsižvelgiant į brandą. Šį trūkumą sprendžia Khoury modelis \cite{KBM13}, keisdamas bičių atliekamus darbus pagal jų amžių. Naujesni modeliai įprastai remiasi senesniais modeliais, sujungdami jų tiriamus procesus, pavyzdžiui, Torres‘o \cite{TRR15} sukurtas modelis simuliuoja vienos bičių šeimos populiaciją pasiremdamas HoPoMo ir Khoury modeliais. 
 Nors minėti modeliai daug dėmesio skiria vidiniams procesams bičių avilyje, yra ir modelių, teikiančių prioritetą kitiems procesams. Atliktoje modelių apžvalgoje pastebėta \cite{BTO13}, jog modelius galima grupuoti pagal procesų grupes, kurias plačiausiai padengia modeliai: bičių šeimos vidiniai procesai (avilyje), žiedadulkių ir maisto paieškos procesai, varozės ir kitų ligų sąveikos su šeimomis procesai. Tačiau tik vieną sritį apimantis modelis negali visapusiškai modeliuoti realios bičių šeimos sistemos ir todėl atsiranda nukrypimai tarp modelių ir realių bičių stebėjimo. Bandant kartu apjungti šias procesų grupes buvo sukurtas ,,BEEHAVE‘‘ modelis \cite{BGT14}, galintis modeliuoti vienos bičių šeimos populiaciją ir atsižvelgiantis tiek į vidinius avilio procesus, tiek ir į išorinius. Modelis buvo praplėstas naujais plėtiniais ir modeliais, su jais atlikti įvairūs tyrimai bičių populiacijos atžvilgiu, įskaitant skirtingas bičių rūšis (modelis „Bumble-BEEHAVE“) \cite{BDP18}, pesticidų poveikį \cite{RBT17} ir t.t.
- Prognozuojami klimato pokyčiai \cite{IPC18}, chemikalų naudojimas, plėtojama žemdirbystė turėtų skatinti atlikti bičių populiacijos prognozes ir nustatyti galimą šių procesų žalą. Šias progzones būtų prasminga atlikti tiek pavienių bitinų, tiek valstybiniu atžvilgiu. Pavyzdžiui, purkštų laukų informacija Lietuvoje kaupiama APIS sistemoje, o bitynai žymimi geografinės informacijos sistemose bityno paso išdavimo metu jau nuo 2016 m. Taigi, yra empirinių duomenų, kurie leistų modeliuoti dabartinę bičių populiaciją ir prognozuoti jos kitimus. Yra pagrindo manyti, jog verta sukurti modelį, galinti modeliuoti bitininkystės procesus didesnės teritorijos ar net šalies lygiu. Dabartiniai modeliai įprastai skirti tik vienos bičių šeimos modeliavimui, todėl reikia nustatyti ir į kuriamą modelį įtraukti daugiau procesų: 
+ Prognozuojami klimato pokyčiai \cite{IPC18}, chemikalų naudojimas, plėtojama žemdirbystė turėtų skatinti atlikti bičių populiacijos prognozes ir nustatyti galimą šių procesų žalą. Šias progzones būtų prasminga atlikti tiek pavienių bitynų, tiek valstybiniu atžvilgiu. Pavyzdžiui, purkštų laukų informacija Lietuvoje kaupiama APIS sistemoje, o bitynai žymimi geografinės informacijos sistemose bityno paso išdavimo metu jau nuo 2016 m. Taigi, yra empirinių duomenų, kurie leistų modeliuoti dabartinę bičių populiaciją ir prognozuoti jos kitimus. Yra pagrindo manyti, jog verta sukurti modelį, galinti modeliuoti bitininkystės procesus didesnės teritorijos ar net šalies lygiu. Dabartiniai modeliai įprastai skirti tik vienos bičių šeimos modeliavimui, todėl reikia nustatyti ir į kuriamą modelį įtraukti daugiau procesų: 
 \begin{itemize}
 \item Bakterinių, grybelinių, virusinių ligų plitimo procesai (nozematozė, puvinys, t.t)
 \item Kelių bičių šeimų įtaka viena kitai (maisto rinkimo, ligų plitimo atžvilgiu)
@@ -188,11 +188,11 @@ Modelio dokumentacijoje aptariami paieškos modelio trūkumai. Vienas šių trū
 \subsubsubsection{Aplinkos modelis}
 
 Modelis naudoja landšafto aplink bičių šeimą informaciją. Šioje informacijoje yra pateikiami maisto šaltiniai (kurių nektaro ir žiedadulkių kiekiai kinta sezoniškai ir priklauso nuo šaltinio tipo, pvz. augalo rūšies).
-Modelis nesiremia konkrečia klimato informacija, bet yra nurodytas leistinas maisto paieškos ir rinkimo laikas dienos atžvilgiu, o klimatas netiesiogiai aprašomas landšafto informacijoje, nurodant kiek kiekvieną dieną sekundžių gali bitės paskirti maisto paieškai. Šias sekundes galima nurodyti empirinių duomenų rinkiniu arba pasirenkant, jog leidžiamas paieškai laikas būtų paskirstytas pagal konstantą arba normalųjį skirstinį. Normalusis skirstinys remiasi HoPoMo modeliu ir $t_{paieskos}$ laikas sekundėmis pasirinktai dienai $d$ apskaičiuojamas pagal \eqref{tp1}:
+Modelis nesiremia konkrečia klimato informacija, bet yra nurodytas leistinas maisto paieškos ir rinkimo laikas dienos atžvilgiu, o klimatas netiesiogiai aprašomas landšafto informacijoje, nurodant kiek kiekvieną dieną sekundžių gali bitės paskirti maisto paieškai. Šias sekundes galima nurodyti empirinių duomenų rinkiniu arba pasirenkant, jog leidžiamas paieškai laikas būtų paskirstytas pagal konstantą arba normalųjį skirstinį. Normalusis skirstinys remiasi HoPoMo modeliu ir $t_{paie\textit{\v{s}}kos}$ laikas sekundėmis pasirinktai dienai $d$ apskaičiuojamas pagal \eqref{tp1}:
 \newpage
 
 \begin{equation}\label{tp1}
-t_{paieskos}= 12×3600×(1-\alpha).
+t_{paie\textit{\v{s}}kos}= 12×3600×(1-\alpha).
 \end{equation}
 
 Kur $\alpha$ yra HoPoMo sezoną nusakantis dydis, apibrėžtas \eqref{ea1}.
@@ -387,7 +387,7 @@ Kelionė. Kai bitė keliauja į geriausią vietą lizdui arba grįžta iš jos. 
 
 \begin{equation}
     \label{eq:equation11}
-    P_{sekmingaPaieska}(w) = s\frac{w}{1,5 u(w)+s(w)}    
+    P_{s\textit{\.e}kmingaPaie\textit{\v{s}}ka}(w) = s\frac{w}{1,5 u(w)+s(w)}    
 \end{equation}
 
 \end{itemize}
@@ -406,18 +406,18 @@ Autoriai nurodo, jog pagal atliktus stebėjimus \cite{SeB99} tik apie 2\% - 4\% 
 
 \begin{equation}
 \label{emir1}
-a(t)=\int_{T_{leliuke}}^{T_{leliuke}+L(t)}u(t-s)p(t-s)ds
+a(t)=\int_{T_{l\textit{\.e}liuk\textit{\.e}}}^{T_{l\textit{\.e}liuk\textit{\.e}}+L(t)}u(t-s)p(t-s)ds
 \end{equation}
 
 \begin{equation}
 \label{emir2}
-b(t)=\int_{0}^{T_{leliuke}}u(t-s)[p(t-s)]^{\frac{s}{T_{leliuke}}}ds
+b(t)=\int_{0}^{T_{l\textit{\.e}liuk\textit{\.e}}}u(t-s)[p(t-s)]^{\frac{s}{T_{l\textit{\.e}liuk\textit{\.e}}}}ds
 \end{equation}
 
 
 \begin{equation}
 \label{emir3}
-u(t)=v(t-T_{kiaus} )=
+u(t)=v(t-T_{kiau\textit{\v{s}}} )=
 \begin{cases}
 u_{0} (t<t_0 )  \text { prieš eksperimentą   }                                          \\
 u ̅_{1} (t_{}0≤t≤t_{1} )  \text { nuo pradinio stebėjimo iki pirmo }                           \\
@@ -445,10 +445,10 @@ p_{N-1} (t_{N-2}≤t≤t_{N-1} )   \\
 
 \begin{equation}
 \label{emir5}
-b(tk)=\int_{0}^{T_{leliuke}}u(t-s) [p(t-s)]^{\frac{s}{T_{leliuke}}} ds | k=0,…,N-1
+b(tk)=\int_{0}^{T_{l\text{\.e}liuk\text{\.e}}}u(t-s) [p(t-s)]^{\frac{s}{T_{l\text{\.e}liuk\text{\.e}}}} ds | k=0,…,N-1
 \end{equation}
 
-Šiose formulėse $T_{kiaus}$ kiaušinėlio ir lervos vystymosi laikotarpis. Bitei ši reikšmė lygi 9 dienoms. $T_{leliuke}$ uždarytos akelės, lėliukės išsivystymo laikotarpis, trunkantis 12 dienų. Tarp stebėjimų skaičiuojami dydžiai yra $a(t)$ – visų suaugusių bičių skaičius, $v(t)$ - motinėlės padėtų kiaušinėlių skaičius intervalo metu, $b(t)$ – visų uždarytų akelių skaičius, $u(t)$ naujai uždarytų akelių skaičius intervalo metu. $u(t)=v(t-9)$, nes $T_{kiaus}=9$. 
+Šiose formulėse $T_{kiau\textit{\v{s}}}$ kiaušinėlio ir lervos vystymosi laikotarpis. Bitei ši reikšmė lygi 9 dienoms. $T_{l\textit{\.e}liuk\textit{\.e}}$ uždarytos akelės, lėliukės išsivystymo laikotarpis, trunkantis 12 dienų. Tarp stebėjimų skaičiuojami dydžiai yra $a(t)$ – visų suaugusių bičių skaičius, $v(t)$ - motinėlės padėtų kiaušinėlių skaičius intervalo metu, $b(t)$ – visų uždarytų akelių skaičius, $u(t)$ naujai uždarytų akelių skaičius intervalo metu. $u(t)=v(t-9)$, nes $T_{kiau\textit{\v{s}}}=9$. 
 Straipsnis taip pat pateikia santrauką žinomų bičių gyvenimo trukmių sąrašą, sudarytą remiantis kitais straipsniais. Nurodoma, jog bitės gyvena 15-40 dienų pavasarį, 15-38 dienų vasarą, 50-60 dienų rudenį, ir 150-304 dienų jeigu buvo išsiritusios žiemos sezonui.
 
 
@@ -456,7 +456,10 @@ Straipsnis taip pat pateikia santrauką žinomų bičių gyvenimo trukmių sąra
 
 \section{Modelių sujungimas}
 
-Modelio įgyvendinimas remiasi dviejų kitais dvejais bičių procesų modeliai: Beehave \cite{BGT14} ir Bumble-Beehave \cite{BDP18}. Beehave modelis skirtas vienos bičių šeimos procesų tyrimams, Bumble-Beehave skirtas kelių kamanių motinėlių stebėjimui duotoje teritorijoje bei jų sukurtų šeimų stebėjimui. Pagal atliekamą užduotį reikėjo bičių modelio skirto kelioms šeimoms, taigi buvo kuriamas naujas Bumble-Beehave modelio variantas skirtas naminėms bitėms, tačiau kamanių šeimos procesus pakeičiant į bičių šeimos procesus. Dabartinis sprendimas įgyvendintas naudojant NetLogo 6.1.0 versijos modeliavimo paketą, teko pakeisti Beehave ir Bumble-Beehave modelių kodą, kuris buvo skirtas NetLogo 5.3 versijai.
+Modelio įgyvendinimas remiasi dviejų kitais dvejais bičių procesų modeliai: Beehave \cite{BGT14} ir Bumble-Beehave \cite{BDP18}. Beehave modelis skirtas vienos bičių šeimos procesų tyrimams, Bumble-Beehave skirtas kelių kamanių motinėlių stebėjimui duotoje teritorijoje bei jų sukurtų šeimų stebėjimui. Pagal atliekamą užduotį reikėjo bičių modelio skirto kelioms šeimoms, taigi buvo kuriamas naujas Bumble-Beehave modelio variantas skirtas naminėms bitėms, tačiau kamanių šeimos procesus pakeičiant į bičių šeimos procesus.
+
+Abu minėti modeliai yra atviro kodo ir remiasi atviro kodo NetLogo  paketu, skirtu agentinių modelių kūrimui. Dabartinis sprendimas taip pat įgyvendintas naudojant NetLogo, naudojant 6.1.0 versijos modeliavimo paketą, todėl teko pakeisti NetLogo 5.3 versijai skirtą Beehave ir Bumble-Beehave.
+
 Bumble-Beehave ir Beehave modeliai modeliuoja skirtingas bičių šeimas, ir šių šeimų procesai, nors ir atrodytų panašūs, turi daug esminių skirtumų. Atitinkamai šiuose modeliuose įgyvendinami skirtingi procesai (žr.~\ref{tab:proc} lentelę).
 Bumble-Beehave negali būti laikomas esminiu šio darbo sprendimu (kaip ir Beehave be papildymų) dėl skirtumų tarp kamanių ir naminių bičių, dėl kurių kamanių modelis nėra išbaigtas naminių bičių atžvilgiu:
 \begin{itemize}
@@ -646,7 +649,7 @@ Tikrinant kuriamą modelį buvo perkelti procesai iš Beehave modelio ir tikrina
 \end{figure}
 
 
-	 Yra kiti skirtumai tarp modelių, kurie matosi nagrinėjant populiacijų ir sukaupto maisto (2 ir 3 pav.) skirtumus. Viena pagrindinių šio skirtumo priežasčių – maisto prieinamumas modeliuose. Beehave modelis turi tik du gėlių laukus, kurių nektaro ir žiedadulkių kiekis nurodomas normaliuoju skirstiniu (4 pav.), bet abu laukai turi skirtingus laikotarpius, kada bitės gali surinkti iš jų didžiausią kiekį maisto. Bumble-Beehave modelis gėlių ir augalų rūšis bei jų parametrus gauna pagal vieną iš įvesties failų, nurodančių skirtingų rūšių gėles ir augalus. Beehave modelyje bitės gali pasiekti abu gėlių laukus (5 pav.), tuo tarpu Bumble-Beehave modelyje atsižvelgiama į paties lauko atstumą nuo šeimos pagal pateikta žemėlapį (6 pav.) bei reikalingo bitės liežuvėlio ilgį, jog atskridusi bitė galėtų surinkti iš augalo nektarą.
+	 Yra kiti skirtumai tarp modelių, kurie matosi nagrinėjant populiacijų ir sukaupto maisto (~\ref{img:m2} ir ~\ref{img:m3} pav.) skirtumus. Viena pagrindinių šio skirtumo priežasčių – maisto prieinamumas modeliuose. Beehave modelis turi tik du gėlių laukus, kurių nektaro ir žiedadulkių kiekis nurodomas normaliuoju skirstiniu (~\ref{img:m4} pav.), bet abu laukai turi skirtingus laikotarpius, kada bitės gali surinkti iš jų didžiausią kiekį maisto. Bumble-Beehave modelis gėlių ir augalų rūšis bei jų parametrus gauna pagal vieną iš įvesties failų, nurodančių skirtingų rūšių gėles ir augalus. Beehave modelyje bitės gali pasiekti abu gėlių laukus (~\ref{img:m5} pav.), tuo tarpu Bumble-Beehave modelyje atsižvelgiama į paties lauko atstumą nuo šeimos pagal pateikta žemėlapį (~\ref{img:m6} pav.) bei reikalingo bitės liežuvėlio ilgį, jog atskridusi bitė galėtų surinkti iš augalo nektarą.
 
 \begin{figure}[H]
     \centering
@@ -691,15 +694,33 @@ Tikrinant kuriamą modelį buvo perkelti procesai iš Beehave modelio ir tikrina
 
 Kiti skirtumai susiję su bičių mirtingumu. Dabartiniame sprendime atsižvelgiama tik į bičių mirtingumą paieškos metu ir jos didžiausią gyvenimo trukmę. Jog bitės galėtų peržiemoti, proporcingai buvo pakeista rudenį išsiritusių bičių gyvenimo trukmė, atitinkanti realius bičių šeimos procesus, kadangi žiemojančios bitės neieško maisto ir nenaudoja papildomų medžiagų nektaro vertimui į medų.  Beehave modelyje prie šio proceso prisideda ir bitės nukeliautas atstumas, kadangi bičių sparneliai nusidėvi intensyvaus darbo metu ir bitė miršta anksčiau, tačiau tai nesudaro didelio skirtumo, kadangi bitei ieškant maisto visais atvejais išauga tikimybė mirti.
 
-\subsubsection{Lyginimas su kitais šaltiniais}
-Bičių šeimos išauga jeigu bitės gali rasti daug žiedadulkių. Tai labai priklauso nuo aplinkinės floros, kuri taip pat priklauso nuo vietovės. Pavyzdyje \cite{Oli15} teigiama, jog bičių šeimos dydis pasiekia viršūnę birželio ir liepos mėnesiais su 50 tūkstančių suaugusių bičių, o tarp lapkričio ir kovo laikosi ties 8 – 12 tūkstančių bičių riba. Tačiau populiacijos atžvilgiu panašius skaičius teikia ir lietuviški vadovėliai. Teigiama, jog stipri šeima užauga iki 60-65 tūkstančių darbininkių \cite{Kar00}. Šie rezultatai buvo pasiekiami ir dabartiniame sprendime, priklausomai nuo keičiamų landšafto duomenų. Tačiau šie vadovėliai nepateikia tikslios informacijos, tame pačiame šaltinyje stiprios šeimos nurodomos, turinčios 60-70 tūkstančių bičių vasarą ir 25-30 tūkstančių žiemojančių bičių, o tai viršija kitų šaltinių informaciją. 
-Kitas nagrinėtas modelis, be nagrinėtų literatūros apžvalgos metu, teikia panašius rezultatus į Beehave bei remiasi HoPoMo modeliu \cite{ScC07,BWZ16}. Jame bičių šeimos kiekis sumažėja ir iki 4 tūkstančių bičių kiekio šeimoje, šis sumažėjimas įvyksta pavasario pradžioje, kai vėl dedami kiaušinėliai ir pirmosios bitės, ieškančios maisto, turi didžiausią mirtingumą. Vasarą pasiekia 40-50 tūkstančių bičių ribą.
 \subsection{Jungtinio modelio aptarimas}
-Darbo esminis sprendimas remiasi dvejais bitininkystės procesų modeliais, kurie turi daug esminių logikos skirtumų bei skirti modeliuoti skirtingą kiekį objektų ir skirtingoje aplinkoje. Tačiau kartu šie modeliai nusako didžiąją dalį procesų, kurie atspindi naminių bičių šeimos gyvenimą. Iš šiame skyriuje pateiktų grafikų matome, jog jungtiniame modelyje bičių populiacijos ir maisto kreivės yra panašios į BEEHAVE modelio kreives ir atitinka empirines žinias. Trečiame skyriuje aptarsime naujus įgyvendintus procesus.
+
+
+Darbo esminis sprendimas remiasi dvejais bitininkystės procesų modeliais, kurie turi daug esminių logikos skirtumų bei skirti modeliuoti skirtingą kiekį objektų ir skirtingoje aplinkoje. Tačiau kartu šie modeliai nusako didžiąją dalį procesų, kurie atspindi naminių bičių šeimos gyvenimą. Iš šiame skyriuje pateiktų grafikų matome, jog jungtiniame modelyje bičių populiacijos ir maisto kreivės yra panašios į BEEHAVE modelio kreives. Palyginkime gautus rezultatus su empirinėmis žiniomis.
+
+Bičių šeimos išauga jeigu bitės gali rasti daug žiedadulkių. Tai labai priklauso nuo aplinkinės floros, kuri taip pat priklauso nuo vietovės. Pavyzdyje \cite{Oli15} teigiama, jog bičių šeimos dydis pasiekia viršūnę birželio ir liepos mėnesiais su 50 tūkstančių suaugusių bičių, o tarp lapkričio ir kovo laikosi ties 8 – 12 tūkstančių bičių riba. Tačiau populiacijos atžvilgiu panašius skaičius teikia ir lietuviški vadovėliai. Teigiama, jog stipri šeima užauga iki 60-65 tūkstančių darbininkių \cite{Kar00}. Šie rezultatai buvo pasiekiami ir dabartiniame sprendime, priklausomai nuo keičiamų landšafto duomenų. Tačiau šie vadovėliai nepateikia tikslios informacijos, tame pačiame šaltinyje stiprios šeimos nurodomos, turinčios 60-70 tūkstančių bičių vasarą ir 25-30 tūkstančių žiemojančių bičių, o tai viršija kitų šaltinių informaciją. 
+
+Kitas nagrinėtas modelis, be nagrinėtų literatūros apžvalgos metu, teikia panašius rezultatus į Beehave bei remiasi HoPoMo modeliu \cite{ScC07,BWZ16}. Jame bičių šeimos kiekis sumažėja ir iki 4 tūkstančių bičių kiekio šeimoje, šis sumažėjimas įvyksta pavasario pradžioje, kai vėl dedami kiaušinėliai ir pirmosios bitės, ieškančios maisto, turi didžiausią mirtingumą. Vasarą pasiekia 40-50 tūkstančių bičių ribą.
+
+Taigi, sukurtas jungtinis modelis modelis, veikiantis agentinio modeliavimo principu ir NetLogo paketu, atitinkantis empirines žinias ir BEEHAVE modelio gaunamus rezultatus. Trečiame skyriuje aptarsime naujus įgyvendintus procesus.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{img/new/gui.png}
+    \caption{Grafinė jungtinio modelio grafinė sąsaja iš BEEHAVE ir Bumble-BEEHAVE elementų}
+    \label{img:gui1}
+\end{figure}
+
+
 
 \section{Patobulintas modelis}
 
-Praeitame skyriuje pristatytas jungtinis BEEHAVE ir Bumble-BEEHAVE modelis, bei procesai, kuriuos pavyko apjungti tarp modelių, jog būtų įmanoma modeliuoti kelias naminių bičių šeimas vienu metu. Dabar pabandykime praplėsti šį modelį naujais procesais. %todo bet gavosi tik vienas?
+Praeitame skyriuje pristatytas jungtinis BEEHAVE ir Bumble-BEEHAVE modelis, bei procesai, kuriuos pavyko apjungti tarp modelių, jog būtų įmanoma modeliuoti kelias naminių bičių šeimas vienu metu. Dabar pabandykime praplėsti šį modelį naujais procesais. %todo bet// gavosi tik vienas?
+
+
+% sudaro daugiau nei tre\v{c}dal\k{i} visų \v{s}eimos aktyvi\k{u} darbininki\k{u} skai\v{c}i\k{u}:
+
 
 %Reikės gal perrašyti
 \subsection{Bičių migracija tarp šeimų}
@@ -708,20 +729,20 @@ Jungtinį sprendimą papildykime bičių migracijos procesu, pagal kurį vėliau
 Literatūros analizės metu rasti empiriniai duomenis apie bičių migraciją \cite{PfC98, BPC16}, tačiau šiam procesui nebuvo pateiktas joks migracijos apskaičiavimo modelis. Galime remtis dar vienu straipsniu, pateikiančiu lygtį migruojančių bičių santykiui \cite{FNF15}:
 
 \begin{equation}
-    n_{migruojanti} = 0,716 + \frac{13,96}{n_{kaimynas}}
+    n_{steb\textit{\.{e}}tos} = 0,716 + \frac{13,96}{i_{kaimyno}}
 \end{equation}
 
 
 
-Kur $n_{migruojanti}$ yra tyrime stebėtų migruojančių bičių kiekis į konkrečią stebimą šeimą iš kitų šeimų, esančių atstumu $n_{kaimynas}$. Nurodomo eksperimento metu 14 avilių buvo sustatyti 18 metrų ilgio eilėje, taigi $n_{kaimynas}$ beveik atitinka metrą, tačiau šį atstumą reiktų suprasti kaip pozicijos eilėje skirtumą. Jei $n_{kaimynas}=1$, tai reiškia, jog bitės į stebimą šeimą atkeliavo iš kairėje ir dešinėje esančių artimiausių kaimynų. Pateikti koeficientai atitinka tik eksperimente stebėtų bičių kiekį. Bendru atveju bitės imigrantės sudaro $17 ± 4\%$ bičių šeimos populiacijos \cite{BPC16}. 
+Kur $n_{steb\textit{\.{e}}tos}$ yra tyrime stebėtų migruojančių bičių kiekis į konkrečią stebimą šeimą iš kitų šeimų, esančių atstumu $i_{kaimyno}$. Nurodomo eksperimento metu 14 avilių buvo sustatyti 18 metrų ilgio eilėje, taigi $n_{kaimyno}$ beveik atitinka metrą, tačiau šį atstumą reiktų suprasti kaip pozicijos eilėje skirtumą arba indeksą. Jei $n_{kaimyno}=1$, tai reiškia, jog bitės į stebimą šeimą atkeliavo iš kairėje ir dešinėje esančių artimiausių kaimynų. Pateikti koeficientai atitinka tik eksperimente stebėtų bičių kiekį. Bendru atveju bitės imigrantės sudaro $17 ± 4\%$ bičių šeimos populiacijos \cite{BPC16}. 
 
-Šie eksperimentai atlikti rudenį, tačiau pateikia panašius rezultatus kaip ir kiti stebėjimai \cite{PfC98, BPC16}, ir galima teigti, jog panašus migracijos pasiskirstymas vyksta ir vasaros metu. Taigi jungtiniame modelyje migracija įgyvendinama perskirstant bites, pasirinkus šeimą ir priskiriant kaimyninių šeimų bites pasirinktai šeimai. Atsižvelgiant į intensyviausio medaus nešimo laikus, kai dažniausiai pasitaiko migracijos reiškinys, mes galime pasirinktai bičių šeimai priskirti  imigruojančių bičių iš kiekvienos kaimynės kas 6 savaites, kadangi darbininkės tuo laikotarpiu tiek laiko ir gyvena. Tuo atveju pasiskaičiuojame pagal modelį sumą, kiek bičių $n_{viso\_migruoja}$ migruotų pagal stebėjimą ir kaimynų didžiausią atstumą ${N_{kaimynai}}$.
+Šie eksperimentai atlikti rudenį, tačiau pateikia panašius rezultatus kaip ir kiti stebėjimai \cite{PfC98, BPC16}, ir galima teigti, jog panašus migracijos pasiskirstymas vyksta ir vasaros metu. Taigi jungtiniame modelyje migracija įgyvendinama perskirstant bites, pasirinkus šeimą ir priskiriant kaimyninių šeimų bites pasirinktai šeimai. Atsižvelgiant į intensyviausio medaus nešimo laikus, kai dažniausiai pasitaiko migracijos reiškinys, mes galime pasirinktai bičių šeimai priskirti  imigruojančių bičių iš kiekvienos kaimynės kas 6 savaites, kadangi darbininkės tuo laikotarpiu tiek laiko ir gyvena. Tuo atveju pasiskaičiuojame pagal modelį sumą, kiek bičių $ n_{migruojan\textit{\v{c}}ios}$ migruotų pagal stebėjimą ir kaimynų didžiausią atstumą ${N_{kaimynai}}$.
 \begin{equation}
-    n_{viso\_migruoja} = \sum_{i=1}^{N_{kaimynai}} = 0,716 + \frac{13,96}{i}
+    n_{migruojan\textit{\v{c}}ios} = \sum_{i=1}^{N_{kaimynai}} = 0,716 + \frac{13,96}{i}
 \end{equation}
-    Ir pagal duotą santykį 17\% santykį perskaičiuotame iš kiekvieno  $n_{kaimynas}$ atstumu esančio kaimyno gaunamą bičių kiekį $m_{migruojanti}$ :
+    Ir pagal duotą santykį 17\% santykį perskaičiuotame iš kiekvieno  $i_{kaimyno}$ atstumu esančio kaimyno gaunamą bičių kiekį $m_{migruojan\textit{\v{c}}ios}$ :
 \begin{equation}   
-    m_{migruojanti} = (0,716 + \frac{13,96}{n_{kaimynas}}) \frac {0,17n_{visos}}{n_{viso\_migruoja}}
+    m_{migruojan\textit{\v{c}}ios} = (0,716 + \frac{13,96}{i_{kaimyno}}) \frac {0,17n_{visos}}{n_{migruojan\textit{\v{c}}ios}}
 \end{equation}
 
 Taigi, jungtinį modelį galima būtų praplėsti bičių migracijos procesu, tačiau jis galioja tik labai ribotomis sąlygomis. Tyrimo metu nebuvo pritaikyti varozės plitimo procesai tarp šeimų, o šiame procese ir pateikto straipsnio \cite{BPC16} modelyje pateikiamas idealizuotas atvejis, jei bitės migruoja nepaveiktos ligų. Be to, šis procesas galioja tik jei atstumas tarp bičių šeimų yra labai mažas ir atitinka bityną. Be to, aptariamas modelis remiasi eksperimentu, atliktu su bičių migraciją skatinančiomis sąlygomis: aviliai buvo nudažyti identiškai, avilių lakos (pro kur bitė įskrenda į avilį), buvo nukreiptos į tą pačią pusę. Taigi, nors pristatytas migracijos procesas remiasi empiriniais duomenimis, jį būtų verta perdaryti prijungus varozės procesus.
@@ -749,7 +770,7 @@ Optimizavimo uždavinius galime apibrėžti pora $(S, f)$; čia $S$ žymi sprend
 s \in  S = \{s^{\nabla} | s^{\nabla} = argmin_{s \in S} f(s)\}.
 \end{equation}
 
-Čia $s$ yra globaliai optimalaus sprendinys. Ieškosime sprendinio, kuriame tikslo funkcija įgyja minimalią reikšmę, t.y. minimizuojama. Panagrinėkime kelias klasikines tikslo funkcijas, naudojamas metaeuristinių algoritmų efektyvumo lyginimui. ~\ref{tab:classic}-oje lentelėje nurodomos darbe naudojamos klasikinės fukcijos ir jų tipai. M - funkcija multimodalinė, turinti daugiau nei vieną modą (nors šiame kontekste laikoma, kad turi vieną minimumą), U - unimodalinė, S - atskiriama (duotai funkcijai $h(x,y)$ galioja $h(x,y)=h_{1}(x)h_{2}(y)$), N - neatskiriama.
+Čia $s$ yra globaliai optimalaus sprendinys. Ieškosime sprendinio, kuriame tikslo funkcija įgyja minimalią reikšmę, t.y. minimizuojama. Panagrinėkime kelias klasikines tikslo funkcijas, naudojamas metaeuristinių algoritmų efektyvumo lyginimui.~\ref{tab:classic}-oje lentelėje nurodomos darbe naudojamos klasikinės fukcijos ir jų tipai. M - funkcija multimodalinė, turinti daugiau nei vieną modą (nors šiame kontekste laikoma, kad turi vieną minimumą), U - unimodalinė, S - atskiriama (duotai funkcijai $h(x,y)$ galioja $h(x,y)=h_{1}(x)h_{2}(y)$), N - neatskiriama. Verta paminėti, jog Schwefel funkcija \cite{Sch81}, pateikta \cite{ABK19} šaltinyje ir naudojama šiame darbe, įprastai apibrėžiama $f(x_{1}\dots x_{n}) = \sum_{i=1}^{D} (-x_{i}\sin{(\sqrt{|x_{i}|})}) + 418,982887 * D$ ir jos minimumas lygus 0, tačiau bus naudojamas variantas, nurodytas ~\ref{tab:classic}-oje lentelėje.
 
 
 \begin{table}[H]
@@ -769,7 +790,7 @@ Dixon Price & UN & $30$ & $[-10,10]^{D}$ & 0 &$f(x)= (x_{1})-1)^{2} \sum_{i=2}^{
 \hline
 Ackley & MN & $30$ & $[-32,32]^{D}$ & 0 &$f(x)=20+e-20\exp{(-0.2\sqrt{\frac{1}{D}}\sum_{i=1}^{D} (x_{i}^{2}))} - \exp{\frac{1}{D}\sum_{i=1}^{D} \cos{2\pi x_{i}}}$ \\
 \hline
-Schwefel & MS & $30$ & $[-500,500]^{D}$ & -1,25\-695 &$f(x)=\sum_{i=1}^{D} (-x_{i}\sin{(\sqrt{|x_{i}|})})$ \\
+Schwefel & MS & $30$ & $[-500,500]^{D}$ & -125\-69,5 &$f(x)=\sum_{i=1}^{D} (-x_{i}\sin{(\sqrt{|x_{i}|})})$ \\
 \hline
 Griewank & MN & $30$ & $[-600,600]^{D}$ & 0 &$f(x)=\frac{1}{4000}(\sum_{i=1}^{D} (x_{i}^{2})) - (\prod_{i=1}^{D}\cos{(\frac{x_{i}}{\sqrt{i}})})+1$ \\
 \hline
@@ -778,7 +799,7 @@ Kupra\-nugario (camel) & MN & $2$ & $[-5,5]^{D}$ & -1,03163 &$f(x)=4x_{1}^{2}-2,
 Branin & MN & $2$ & $[-5,10]^{D}$ & 0,39789 &$f(x)=(x_{2}+5-\frac{5,1}{4\pi^{2}}-6)^{2}+10(1-\frac{1}{8\pi})\cos{x_{1}}+10$
 \end{tabular}
 \end{table}
-
+Šios funkcijos ir jų testavimas implementuotas Python kalba. 
 
 Dirbtinį bičių šeimos algoritmą galime aprašyti šiais žingsniais:
 
@@ -907,7 +928,7 @@ k(x_m) = fit(x_{geriausias})norm(x_{m}){bandymai(x_m)}
 
 
 Algoritmą, veikiantį su šiais pakeitimais, pavadinkime patobulintu greituoju besispiečiančios šeimos algoritmu (angl. Improved Quick Swarming Artificial Bee Colony arba iqsABC). Šio algoritmo bičių žvalgų ir darbininkių žingsnių pseudokodas pateikiamas 5 priede.
-
+Šis algoritmas buvo įgyvendintas su Python programavimo kalba, besiremiant įprasto ABC algoritmo implementacija HIVE \cite{Wui17}, tačiau ją pakeitus, jog būtų kaupiama informacija pagal kiekvieną tikslo funkcijos įvertinimą ir algoritmas būtų baigiamas pasiekus nustatytą tikslo funkcijos tikrinimų ribą. Tuo pačiu principu įgyvendinti ir iqABC bei qABC algoritmai, kurie bus naudojami kitame skyriuje.
 
 \subsubsection{Dirbtinių bičių šeimų algoritmų lyginimas}
 
@@ -1040,7 +1061,7 @@ Sphere&-&-1.239227&0.9099\\
 
 
 
-Išsamesnei analizei pasitelktos papildomos tikslo funkcijos \cite{CLZ14} (žr.~\ref{tab:extra}. lentelę). Funkcijos nuo $f_{10}$ iki $f_{15}$ yra sudėtinės, t.y. $F(x)=f(z_{1})+...+f(z_{n})$, kur $n$ yra sudedamųjų funkcijų kiekis, o $z$ yra kintamųjų $x$ poaibis, kur $x$ kintamieji paslinkti, jog sprendinių ieškojimas vyktų intervale $[-100,100]^{D}$, o globalų minimumą duodantys kintamieji būtų intervale $[-80,80]^{D}$. Šis paslinkimas naudojamas ir likusioms funkcijoms. 
+Išsamesnei analizei pasitelktos papildomos tikslo funkcijos \cite{CLZ14} (žr.~\ref{tab:extra}. lentelę). Funkcijos nuo $f_{10}$ iki $f_{15}$ yra sudėtinės, t.y. $F(x)=f(z_{1})+...+f(z_{n})$, kur $n$ yra sudedamųjų funkcijų kiekis, o $z$ yra kintamųjų $x$ poaibis, kur $x$ kintamieji paslinkti, jog sprendinių ieškojimas vyktų intervale $[-100,100]^{D}$, o globalų minimumą duodantys kintamieji būtų intervale $[-80,80]^{D}$. Šis paslinkimas naudojamas ir likusioms funkcijoms. Šių funkcijų pritaikymui naudota pateikto šaltinio \cite{CLZ14} funkcijų implementacija C kalba, į kurią realizuoti dirbtinių bičių šeimų algoritmai kreipėsi per Python ctypes biblioteką.
 
 \begin{table}[H]
 \centering
@@ -1188,15 +1209,11 @@ Tikslo funkcija šiuo atveju turėtų nurodyti geriausią bičių šeimos naujo 
     \label{img:new1}
 \end{figure}
 
-Sukurta tikslo funkcija, skaičiuojanti reikšmę duotam landšafto žemėlapio pikseliui $x$ \eqref{mapgoal}. Duotai landšafto informacijai apskaičiuotos tikslo funkcijos reikšmės vaizdiškai pateiktos 4 priede. 
+Sukurta tikslo funkcija, skaičiuojanti reikšmę duotam landšafto žemėlapio pikseliui $x=(x_{x},x_{y})$ \eqref{mapgoal}. Be maistingumo reikšmės matome, jog tikslo funkcijoje naudojamos sinuso ir kosinuso funkcijos. Kadangi landšafto informacija yra vienoda kiekvieno gėlių lauko plote, ši variacija padeda algoritmui išvengti situacijų, kai visi duoti sprendiniai yra vienodi. Papildomai naudojamas labai mažas skaičius $\epsilon$, jog ši variacija nedarytų didelės įtakos galutiniam atsakymui. Duotai landšafto informacijai apskaičiuotos tikslo funkcijos reikšmės vaizdiškai pateiktos 4 priede. 
 
 \begin{equation}\label{mapgoal}
-f(x) = x_{\text{žydėjimo trukmė}}  (x_{\text{žiedadulkės}}x_{\text{žiedadulkių koncentracija}} + x_{\text{nektaras}}x_{\text{nektaro maistinė vertė}} ) 
+f(x) = \epsilon\sin{(x_{x})}\cos{(x_{y})} - x_{\text{žydėjimo trukmė}}  (x_{\text{žiedadulkės}}x_{\text{žiedadulkių koncentracija}} + x_{\text{nektaras}}x_{\text{nektaro maistinė vertė}}) 
 \end{equation}
-
-
-
-
 
 Kadangi naująjį algoritmą taikome dalykinėje srityje, o ne bendroms optimizavimo užduotims, turime pakeisti algoritmo parametrus ir veikimą, jog šis tiksliau atitiktų tikrų bičių elgesį. 
 
@@ -1204,7 +1221,7 @@ Iš spietimosi stebėjimų \cite{See10} žinome, jog tik dalis bičių šeimos i
 
 Panaudoję šią tikslo funkciją su iqsABC algoritmu gauname naują bičių lizdo vietą, į kurią spiesis bitės. Įvykdyti keli bandymai su skirtingais parametrais tikrinant, ar bitės išsirinks palankiausią augalų lauką nektaro ir žiedadulkių atžvilgiu. Rezultatai pateikti~\ref{step1}-ame ir~\ref{step2}-ame paveikslėliuose, čia apskritimu nurodomas paieškos plotas pagal parametrą $d$, o kiekvienas mažesnis raudonas apskritimas yra algoritmo rastas sprendinys kiekvieno bandymo metu. Besispiečiančios šeimos pradinės koordinatės nurodytos su mėlyna žvaigžde.~\ref{step1}-ame paveikslėlyje algoritme naudojamos pradinės šeimos kiekis yra 500, tikslo funkcijų įvertinimų riba 10000. Šiuo atveju šeimos spiečiasi prie geriausiai įvertinto maisto šaltinio.
 
-Realybėje spietimosi metu gali pasikeisti oro sąlygos. Jeigu spietimosi metu pradeda lyti, bitės keliaus į lizdą anksčiau, išnagrinėjusios mažiau vietų lizdui. Tokį elgesį galime atkartoti sumažinę tikslo funkcijos įvertinimų kiekį. Algoritmo veikimas su 100 bičių ir tik 1000 tikslo funkcijos įvertinimų pavaizduotas~\ref{step2} paveikslėlyje, matome, jog bitės pasirenka ir kitus maisto šaltinius, įskaitant esančius arčiau lizdo. 
+
 
 \begin{figure}
     \centering
@@ -1212,7 +1229,6 @@ Realybėje spietimosi metu gali pasikeisti oro sąlygos. Jeigu spietimosi metu p
     \caption{Rezultatai gauti  pritaikius iqsABC su 500 bičių ir 10000 tikslo funkcijos tikrinimų.}
     \label{step1}
 \end{figure}
-
 
 \begin{figure}
     \centering
@@ -1222,10 +1238,14 @@ Realybėje spietimosi metu gali pasikeisti oro sąlygos. Jeigu spietimosi metu p
 \end{figure}
 
 
+Realybėje spietimosi metu gali pasikeisti oro sąlygos. Jeigu spietimosi metu pradeda lyti, bitės keliaus į lizdą anksčiau, išnagrinėjusios mažiau vietų lizdui. Tokį elgesį galime atkartoti sumažinę tikslo funkcijos įvertinimų kiekį. Algoritmo veikimas su 100 bičių ir tik 1000 tikslo funkcijos įvertinimų pavaizduotas~\ref{step2} paveikslėlyje, matome, jog bitės pasirenka ir kitus maisto šaltinius, įskaitant esančius arčiau lizdo. 
 
-Išbandykime šią tikslo funkciją ir algoritmą kartu su likusiu jungtiniu modeliu. Patenkinus vieną iš spietimosi sąlygų \eqref{ebpss3}, bičių šeima spiečiasi ir ieško naujo lizdo.  Pritaikius naująjį algoritmą jungtiniame modelyje matome, jog besispiečiančios bitės iš pasiekiamų laukų pasirenka geriausiai tikslo funkcijos įvertintą augalų lauką (žr. ~\ref{img:fin1} pav.)
 
-\begin{figure}[H]
+
+
+Išbandykime šią tikslo funkciją ir algoritmą kartu su likusiu jungtiniu modeliu. Patenkinus vieną iš spietimosi sąlygų \eqref{ebpss3}, bičių šeima spiečiasi ir ieško naujo lizdo.  Pritaikius naująjį algoritmą jungtiniame modelyje matome, jog besispiečiančios bitės iš pasiekiamų laukų pasirenka geriausiai tikslo funkcijos įvertintą augalų lauką (žr.~\ref{img:fin1} pav.)
+
+\begin{figure}
     \centering
     \includegraphics[scale=0.75]{img/new/mags.png}
      \caption{Bičių šeimos spietimasis jungtiniame modelyje}
@@ -1244,7 +1264,7 @@ Realybėje bitės atsižvelgtų į papildomus kriterijus, ieškodamos tinkamų m
 % nagrinėtų problemų sprendimo metodų palyginimai, siūlomos rekomendacijos,
 % akcentuojamos naujovės).
 
-Darbo metu išanalizavus  esamus bičių populiacijos modelius pastebėta, jog jie neapima visų bitininkystės ir bičių šeimos procesų, tačiau tarp jų yra daug procesų apjungiantis BEEHAVE modelis. Šis modelis gali simuliuoti tik vieną šeimą. Rastas panašus Bumble-BEEHAVE modelis, galintis modeliuoti kelias kamanių šeimas. Jungtinis modelis gautas kelių kamanių šeimų modeliavimą papildžius naminių bičių procesais. Taip buvo sukurtas naujas modelis galintis modeliuoti kelias naminių bičių šeimas vienu metu.
+Darbo metu išanalizavus  esamus bičių populiacijos modelius pastebėta, jog jie neapima visų bitininkystės ir bičių šeimos procesų, tačiau tarp jų yra daug procesų apjungiantis BEEHAVE modelis. Šis modelis gali simuliuoti tik vieną šeimą. Rastas panašus Bumble-BEEHAVE modelis, galintis modeliuoti kelias kamanių šeimas. Jungtinis modelis gautas kelių kamanių šeimų modeliavimą papildžius naminių bičių procesais. Tai buvo atlikta perrašant NetLogo kodą, jog Bumble-Beehave metodai atitiktų naminių bičių, o ne kamanių procesus. Taip buvo sukurtas naujas modelis galintis modeliuoti kelias naminių bičių šeimas vienu metu.
 
 Sukurtas jungtinis modelis toliau buvo tobulinamas procesais, kurie remiasi keliomis arba sukuria naujas bičių šeimas. Įgyvendinti du nauji procesai: bičių migravimas ir bičių spietimasis. Bičių spietimasis jau egzistavo BEEHAVE modelyje, tačiau jis nebuvo susijęs su lizdo pakeitimu ir modeliavo tik vieną šeimą (arba naująją, arba senąją). Pristatytas proceso pakeitimas leidžia modeliuoti spiečiaus naujo lizdo pasirinkimą pagal bičių lizdo ieškojimo ir sprendimo priėmimo procesus.
 
@@ -1252,10 +1272,10 @@ Kuriant spietimosi procesą sukurti ir išbandyti nauji dirbtinių bičių šeim
 
 Iš gautų rezultatų daromos šios išvados:
 \begin{enumerate}
-    \item Iš dabartinių bitininkystės procesų modelių įmanoma sudaryti kelias bičių šeimas simuliuojantį modelį.
+    \item Iš dabartinių BEEHAVE ir Bumble-BEEHAVE bitininkystės procesų modelių įmanoma sudaryti kelias naminių bičių šeimas simuliuojantį modelį.
     \item Kelias bičių šeimas apimantis modelis suteikia galimybę jį toliau tobulinti pridedant tarpšeimyninius bičių procesus, tačiau šie procesai tarpusavyje gali būti reikšmingai susiję. Pagal empirines žinias ir tyrimus bičių migracija keičiasi pagal varozės procesus.
     \item Dirbtinių bičių šeimų algoritmai gali būti sėkmingai tobulinami bičių spietimosi principu, o ne vien maisto paieškos principu.
-    \item Dirbtinių bičių šeimų algoritmai sėkmingai pritaikomi tiek optimizavimo uždaviniuose, tiek bitininkystės modeliavimo srityje.
+    \item Dirbtinių bičių šeimų algoritmai sėkmingai pritaikomi bitininkystės modeliavimo srityje.
 \end{enumerate}
 
 
