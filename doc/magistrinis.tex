@@ -1015,7 +1015,7 @@ Analizuojant algoritmų rezultatus su klasikinėmis tikslo funkcijomis nepasteb�
 \small
 \caption{iqsABC algoritmo efektyvumas su klasikinėmis tikslo funkcijomis kai $D=30$ (500000 tikslo funkcijos skaičiavimų)}
 \label{tab:s500kc}
-\begin{tabular}{l|l| n{8}{3}| n{8}{3}}
+\begin{tabular}{l|l| n{8}{3}| n{8}{4}}
 % Tikslo funkcija & \makecell{Statistiškai geresnis \\ algoritmas} & \makecell{Atsakymo vidurkio \\ skirtumas ABC-sABC} & p reikšmė \\
  Tikslo funkcija & Statistiškai geresnis & \text{Atsakymo vidurkio} & \text{p reikšmė} \\
   & algoritmas &   \text{skirtumas ABC-sABC} & \\
@@ -1168,7 +1168,7 @@ f15&-&24.250675&0.2180
 
 Taigi bandydami gerinti iqABC algoritmą pagal spietimosi lizdo paieškos logiką negavome statistiškai reikšmingo geresnio ar blogesnio rezultato išbandę naująjį iqsABC algoritmą.
 
-Pabandykime atskirai patikrinti prielaidą, jog kintančios sprendinių tikrinimo ribos gali padėti bitėms greičiau aptikti geresnį sprendinį. Pasirenkime ABC algoritmu, tačiau stebinčių bičių žingsnio tikimybei naudokime \eqref{iqsobp}, o žvalgų žingsnyje naudokime ribą iš formulės \eqref{iqslim2}. Pavadinkime šį algoritmą besispiečiančių bičių šeimos algoritmu (angl. Swarming Bee Colony Algorithm arba sABC). Atlikus bandymus ($D=30$, tikslo funkcijų įvertinimų po 1500) ir palyginus ABC su sABC, iš tiesų matome, jog sABC statistiškai turi reikšmingą pranašumą su Ackley ir Rastrigin funkcija bei papildomomis $f_{4}$, $f_{5}$, $f_{6}$, $f_{7}$ funkcijomis (žr.~\ref{tab:nsmall1} lentelę). Konvergavimo grafikai pateikiami 3 priede, o pilna Wilcoxon testo lentelė pateikiama 2 priede. %~\ref{PR3all}
+Pabandykime atskirai patikrinti prielaidą, jog kintančios sprendinių tikrinimo ribos gali padėti bitėms greičiau aptikti geresnį sprendinį. Pasirenkime ABC algoritmu, tačiau stebinčių bičių žingsnio tikimybei naudokime \eqref{iqsobp}, o žvalgų žingsnyje naudokime ribą iš formulės \eqref{iqslim2}. Pavadinkime šį algoritmą besispiečiančios dirbtinės bičių šeimos algoritmu (angl. Swarming Bee Colony Algorithm arba sABC). Atlikus bandymus ($D=30$, tikslo funkcijų įvertinimų po 1500) ir palyginus ABC su sABC, iš tiesų matome, jog sABC statistiškai turi reikšmingą pranašumą su Ackley ir Rastrigin funkcija bei papildomomis $f_{4}$, $f_{5}$, $f_{6}$, $f_{7}$ funkcijomis (žr.~\ref{tab:nsmall1} lentelę). Konvergavimo grafikai pateikiami 3 priede, o pilna Wilcoxon testo lentelė pateikiama 2 priede. %~\ref{PR3all}
 
 
 \begin{table}[H]
@@ -1209,7 +1209,7 @@ Tikslo funkcija šiuo atveju turėtų nurodyti geriausią bičių šeimos naujo 
     \label{img:new1}
 \end{figure}
 
-Sukurta tikslo funkcija, skaičiuojanti reikšmę duotam landšafto žemėlapio pikseliui $x=(x_{x},x_{y})$ \eqref{mapgoal}. Be maistingumo reikšmės matome, jog tikslo funkcijoje naudojamos sinuso ir kosinuso funkcijos. Kadangi landšafto informacija yra vienoda kiekvieno gėlių lauko plote, ši variacija padeda algoritmui išvengti situacijų, kai visi duoti sprendiniai yra vienodi. Papildomai naudojamas labai mažas skaičius $\epsilon$, jog ši variacija nedarytų didelės įtakos galutiniam atsakymui. Duotai landšafto informacijai apskaičiuotos tikslo funkcijos reikšmės vaizdiškai pateiktos 4 priede. 
+Sukurta tikslo funkcija, skaičiuojanti maistingumo reikšmę duotam landšafto žemėlapio pikseliui $x=(x_{x},x_{y})$ \eqref{mapgoal}. Be maistingumo reikšmės matome, jog tikslo funkcijoje naudojamos sinuso ir kosinuso funkcijos. Kadangi landšafto informacija yra vienoda kiekvieno gėlių lauko plote, ši variacija padeda algoritmui išvengti situacijų, kai visi duoti sprendiniai yra vienodi. Papildomai naudojamas labai mažas skaičius $\epsilon$, jog ši variacija nedarytų didelės įtakos galutiniam atsakymui. Duotai landšafto informacijai apskaičiuotos tikslo funkcijos reikšmės vaizdiškai pateiktos 4 priede. 
 
 \begin{equation}\label{mapgoal}
 f(x) = \epsilon\sin{(x_{x})}\cos{(x_{y})} - x_{\text{žydėjimo trukmė}}  (x_{\text{žiedadulkės}}x_{\text{žiedadulkių koncentracija}} + x_{\text{nektaras}}x_{\text{nektaro maistinė vertė}}) 
@@ -1243,7 +1243,7 @@ Realybėje spietimosi metu gali pasikeisti oro sąlygos. Jeigu spietimosi metu p
 
 
 
-Išbandykime šią tikslo funkciją ir algoritmą kartu su likusiu jungtiniu modeliu. Patenkinus vieną iš spietimosi sąlygų \eqref{ebpss3}, bičių šeima spiečiasi ir ieško naujo lizdo.  Pritaikius naująjį algoritmą jungtiniame modelyje matome, jog besispiečiančios bitės iš pasiekiamų laukų pasirenka geriausiai tikslo funkcijos įvertintą augalų lauką (žr.~\ref{img:fin1} pav.)
+Išbandykime šią tikslo funkciją ir algoritmą kartu su likusiu jungtiniu modeliu. Patenkinus vieną iš spietimosi sąlygų \eqref{ebpss3}, bičių šeima spiečiasi ir ieško naujo lizdo. Iš modelio sABC algoritmas gauna pradines bičių šeimos koordinates ir grąžina naujo lizdo vietą. Pritaikius naująjį algoritmą jungtiniame modelyje matome, jog besispiečiančios bitės iš pasiekiamų laukų pasirenka geriausiai tikslo funkcijos įvertintą augalų lauką (žr.~\ref{img:fin1} pav.). Taip naujasis sABC algoritmas įgyvendina naująjį spietimosi procesą patobulintame modelyje.
 
 \begin{figure}
     \centering
@@ -1255,6 +1255,8 @@ Išbandykime šią tikslo funkciją ir algoritmą kartu su likusiu jungtiniu mod
 Bitės spiečiasi sudarydamos naują šeimą rastoje vietoje, palikdamos dalį bičių senojoje šeimoje pagal santykius, naudojamus BEEHAVE modelyje. Kartu spiečius išsineša ir reikalingą maisto atsargų kiekį irgi pagal BEEHAVE modelį, tačiau nauja bičių šeima jau modeliuojama kitoje pozicijoje ir turi prieigą prie kitų maisto šaltinių.
 
 Realybėje bitės atsižvelgtų į papildomus kriterijus, ieškodamos tinkamų medžių drevių arba ieškodamos kitų, anksčiau apleistų, avilių. Gavus išsamesnių landšafto pavyzdžių būtų įmanoma praplėsti tikslo funkciją ir ją pritaikyti išsamesnei informacijai. 
+
+Sukurto modelio išeigos kodas patalpintas GitHub kodo talpykloje \cite{Veg20}. 
 
 
 
