@@ -1,4 +1,4 @@
-\documentclass{VUMIFKompMagistrinis}
+\documentclass{VUMIFPSmagistrinis}
 \usepackage{algorithmicx}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -113,7 +113,7 @@ Darbo metu bus sprendžiami šie uždaviniai:
 
 \section{Literatūros apžvalga}
 
-Sudarant tobulesnį bičių populiacijos modelį verta išvardinti bitininkystės procesus, kurie yra nagrinėjami dabartiniuose modeliuose, bei procesus, kuriuos verta įtraukti bandant simuliuoti bičių populiacijos augimą šalies mastu. Šioje apžvalgoje aptarsime BEEHAVE modelį, jo modeliuojamus procesus, kaip tuos pačius procesus modeliuoja kitų modelių autoriai, bei procesus, kurie neįeina į BEEHAVE modelį ir pagal kuriuos bus grindžiamas patobulinto BEEHAVE modelio veikimas.
+Sudarant patobulintą bičių populiacijos modelį verta išvardinti bitininkystės procesus, kurie yra nagrinėjami dabartiniuose modeliuose, bei procesus, kuriuos verta įtraukti bandant simuliuoti bičių populiacijos augimą šalies mastu. Šioje apžvalgoje aptarsime BEEHAVE modelį, jo modeliuojamus procesus, kaip tuos pačius procesus modeliuoja kitų modelių autoriai, bei procesus, kurie neįeina į BEEHAVE modelį ir pagal kuriuos bus grindžiamas patobulinto BEEHAVE modelio veikimas.
 
 \subsection{BEEHAVE modelis}
 
@@ -121,7 +121,7 @@ Sudarant tobulesnį bičių populiacijos modelį verta išvardinti bitininkystė
 
 \subsubsection{Modelio įvadas}
 
-Šio modelio bičių populiacijos skaičiavimai buvo lyginami su empirinėmis žiniomis apie realią bičių šeimų populiacijos kaitą. Šio modelio trūkumai  buvo nustatyti ir paviešinti Europos maisto saugos tarnybos \cite{EFSA15}. Esminiai trūkumai buvo: pesticidų procesų trūkumas, primityvus landšafto (topografijos, augalijos) modelis, ribota klimato konfigūracija (modelis buvo pritaikytas centrinės Europos klimato zonai) ir apribotas ligų kiekis, tiriant tik varozę. Dalis trūkumų buvo pašalinti plečiant modelio funkcionalumą moduliais, pavyzdžiui, leidžiant naudoti išsamesnius landšafto modelius pasitelkiant geografinių informacinių sistemų informaciją su ,,Bee-Steward‘‘ moduliu. Su modelio plėtiniais buvo atlikti įvairūs tyrimai bičių populiacijos atžvilgiu, įskaitant skirtingas bičių rūšis (modelis „Bumble-BEEHAVE“) \cite{BDP18}, pesticidų poveikį \cite{RBT17} ir t.t.
+BEEHAVE modelio bičių populiacijos skaičiavimai buvo lyginami su empirinėmis žiniomis apie realią bičių šeimų populiacijos kaitą. Šio modelio trūkumai  buvo nustatyti ir paviešinti Europos maisto saugos tarnybos \cite{EFSA15}. Esminiai nurodyti trūkumai: pesticidų procesų trūkumas, primityvus landšafto (topografijos, augalijos) modelis, ribota klimato konfigūracija (modelis buvo pritaikytas centrinės Europos klimato zonai) ir apribotas ligų kiekis, tiriant tik varozę. Dalis trūkumų buvo pašalinti plečiant modelio funkcionalumą moduliais, pavyzdžiui, leidžiant naudoti išsamesnius landšafto modelius pasitelkiant geografinių informacinių sistemų informaciją su ,,Bee-Steward‘‘ moduliu. Su modelio plėtiniais buvo atlikti įvairūs tyrimai bičių populiacijos atžvilgiu, įskaitant skirtingas bičių rūšis (modelis „Bumble-BEEHAVE“) \cite{BDP18}, pesticidų poveikį \cite{RBT17} ir t.t.
 Šis modelis remiasi stochastiniais skaičiavimais šioms sritims:
 \begin{itemize}
     \item 	Lizdo suradimas.
@@ -740,10 +740,20 @@ Kur $n_{steb\textit{\.{e}}tos}$ yra tyrime stebėtų migruojančių bičių kiek
 \begin{equation}
     n_{migruojan\textit{\v{c}}ios} = \sum_{i=1}^{N_{kaimynai}} = 0,716 + \frac{13,96}{i}
 \end{equation}
-    Ir pagal duotą santykį 17\% santykį perskaičiuotame iš kiekvieno  $i_{kaimyno}$ atstumu esančio kaimyno gaunamą bičių kiekį $m_{migruojan\textit{\v{c}}ios}$ :
+    Ir pagal duotą santykį 17\%±4\% santykį perskaičiuotame iš kiekvieno  $i_{kaimyno}$ atstumu esančio kaimyno gaunamą bičių kiekį $m_{migruojan\textit{\v{c}}ios}$ :
 \begin{equation}   
-    m_{migruojan\textit{\v{c}}ios} = (0,716 + \frac{13,96}{i_{kaimyno}}) \frac {0,17n_{visos}}{n_{migruojan\textit{\v{c}}ios}}
+    m_{migruojan\textit{\v{c}}ios} = (0,716 + \frac{13,96}{i_{kaimyno}}) \frac {0,22n_{visos}}{n_{migruojan\textit{\v{c}}ios}}
 \end{equation}
+
+Išbandykime šį migracijos kiekį su 20 bičių šeimų, kurių kiekvienos dydis po 1000 bičių (žr.~\ref{pavem} pav.). Mažiausias aptiktas bičių migrančių kiekis matomas pirmoje šeimoje ir sudaro 13,7\% visos bičių šeimos, tuo tarpu didžiausias migrančių kiekis matomas keturioliktoje šeimoje, kurioje migrantės sudaro 20,9\% visos šeimos populiacijos. Bičių migrančių pasiskirstymas atitinka šaltinyje nurodomus intervalus.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{img/new/emi.png}
+    \caption{Bičių migrančių pasiskirstymas. Šeimos indeksų skirtumus galime laikyti $i_{kaimyno}$ indeksu}
+    \label{pavem}
+\end{figure}
+
 
 Taigi, jungtinį modelį galima būtų praplėsti bičių migracijos procesu, tačiau jis galioja tik labai ribotomis sąlygomis. Tyrimo metu nebuvo pritaikyti varozės plitimo procesai tarp šeimų, o šiame procese ir pateikto straipsnio \cite{BPC16} modelyje pateikiamas idealizuotas atvejis, jei bitės migruoja nepaveiktos ligų. Be to, šis procesas galioja tik jei atstumas tarp bičių šeimų yra labai mažas ir atitinka bityną. Be to, aptariamas modelis remiasi eksperimentu, atliktu su bičių migraciją skatinančiomis sąlygomis: aviliai buvo nudažyti identiškai, avilių lakos (pro kur bitė įskrenda į avilį), buvo nukreiptos į tą pačią pusę. Taigi, nors pristatytas migracijos procesas remiasi empiriniais duomenimis, jį būtų verta perdaryti prijungus varozės procesus.
 
@@ -770,10 +780,10 @@ Optimizavimo uždavinius galime apibrėžti pora $(S, f)$; čia $S$ žymi sprend
 s \in  S = \{s^{\nabla} | s^{\nabla} = argmin_{s \in S} f(s)\}.
 \end{equation}
 
-Čia $s$ yra globaliai optimalaus sprendinys. Ieškosime sprendinio, kuriame tikslo funkcija įgyja minimalią reikšmę, t.y. minimizuojama. Panagrinėkime kelias klasikines tikslo funkcijas, naudojamas metaeuristinių algoritmų efektyvumo lyginimui.~\ref{tab:classic}-oje lentelėje nurodomos darbe naudojamos klasikinės fukcijos ir jų tipai. M - funkcija multimodalinė, turinti daugiau nei vieną modą (nors šiame kontekste laikoma, kad turi vieną minimumą), U - unimodalinė, S - atskiriama (duotai funkcijai $h(x,y)$ galioja $h(x,y)=h_{1}(x)h_{2}(y)$), N - neatskiriama. Verta paminėti, jog Schwefel funkcija \cite{Sch81}, pateikta \cite{ABK19} šaltinyje ir naudojama šiame darbe, įprastai apibrėžiama $f(x_{1}\dots x_{n}) = \sum_{i=1}^{D} (-x_{i}\sin{(\sqrt{|x_{i}|})}) + 418,982887 * D$ ir jos minimumas lygus 0, tačiau bus naudojamas variantas, nurodytas ~\ref{tab:classic}-oje lentelėje.
+Čia $s$ yra globaliai optimalaus sprendinys. Ieškosime sprendinio, kuriame tikslo funkcija įgyja minimalią reikšmę, t.y. minimizuojama. Panagrinėkime kelias klasikines tikslo funkcijas, naudojamas metaeuristinių algoritmų efektyvumo lyginimui.~\ref{tab:classic}-oje lentelėje nurodomos darbe naudojamos klasikinės fukcijos ir jų tipai. M - funkcija multimodalinė, turinti daugiau nei vieną modą (nors šiame kontekste laikoma, kad turi vieną minimumą), U - unimodalinė, S - atskiriama (duotai funkcijai $h(x,y)$ galioja $h(x,y)=h_{1}(x)h_{2}(y)$), N - neatskiriama. Verta paminėti, jog Schwefel funkcija \cite{Sch81}, pateikta \cite{ABK19} šaltinyje ir naudojama šiame darbe, įprastai apibrėžiama $f(x_{1}\dots x_{n}) = \sum_{i=1}^{D} (-x_{i}\sin{(\sqrt{|x_{i}|})}) + 418,982887 * D$ ir jos minimumas lygus 0, tačiau bus naudojamas variantas, nurodytas ~\ref{tab:classic}-oje lentelėje. Šios funkcijos ir jų testavimas implementuotas Python kalba. 
 
 
-\begin{table}[H]
+\begin{table}
 \centering
 \caption{Klasikinės tikslo funkcijos optimizavimo uždaviniams}
 \label{tab:classic}
@@ -799,7 +809,7 @@ Kupra\-nugario (camel) & MN & $2$ & $[-5,5]^{D}$ & -1,03163 &$f(x)=4x_{1}^{2}-2,
 Branin & MN & $2$ & $[-5,10]^{D}$ & 0,39789 &$f(x)=(x_{2}+5-\frac{5,1}{4\pi^{2}}-6)^{2}+10(1-\frac{1}{8\pi})\cos{x_{1}}+10$
 \end{tabular}
 \end{table}
-Šios funkcijos ir jų testavimas implementuotas Python kalba. 
+
 
 Dirbtinį bičių šeimos algoritmą galime aprašyti šiais žingsniais:
 
@@ -817,7 +827,7 @@ x_{m,i}=k_{i}+rand(0,1)(j_{i}-k_{i})
 v_{m,\ i}=x_{m,\ i} +\phi_{m,\ i} (x_{m,\ i} -x_{k,i} )
 \end{equation}
 
-Čia $\phi_{m,i}$ atsitiktinis skaičius tarp [-1,1].
+Čia $\phi_{m,i}$ atsitiktinis skaičius tarp [-1,1]. Bitės rinkėjos atliktų šį vaidmenį realioje šeimoje.
 
     \item 	Stebinčių bičių fazė. Praeitame žingsnyje rasti ir gerinami bičių sprendiniai perduodami kitoms bitėms, apskaičiuojant tikimybes kiekvienam sprendiniui, jog stebinčioji bitė pasirinks gerinti tą sprendinį. Ši tikimybė proporcinga skaičiuojamo sprendinio kokybei pagal tinkamumo funkcijos reikšmę:
 
@@ -835,7 +845,7 @@ fit(x_m)=
 \end{equation}
 
 
-    \item 	Bičių žvalgų fazė. Jei konkretus sprendinys antroje fazėje buvo nesėkmingai gerintas nustatytą kiekį kartų $l$, jis yra atmetamas ir pakeičiamas kitu atsitiktinai parenkamu sprendiniu pagal \eqref{ei1}.
+    \item 	Bičių žvalgų fazė. Jei konkretus sprendinys antroje fazėje buvo nesėkmingai gerintas nustatytą kiekį kartų $l$, jis yra atmetamas ir pakeičiamas kitu atsitiktinai parenkamu sprendiniu pagal \eqref{ei1}. Bitės lankuolės atliktų šio ir stebinčių bičių žingsnių vaidmenius realioje bičių šeimoje.
 
     \item 	Įsimenamas geriausias rezultatas. Jeigu rezultatas netenkina baigimo sąlygų, grįžtama į antrą žingsnį. Baigimo salygos įprastai yra algoritmų iteracijų riba, tačiau dėl algoritmo lyginimo tikslų arba dėl ribotų resursų, šie kriterijai taip pat gali būti tikslo funkcijos skaičiavimų kiekis arba bendras vykdymo laikas. Paprastoje šio algoritmo versijoje tai yra iteracijų kiekis, kuris šiame žingsnyje didinamas vienetu.
 
@@ -1019,16 +1029,27 @@ Analizuojant algoritmų rezultatus su klasikinėmis tikslo funkcijomis nepasteb�
 % Tikslo funkcija & \makecell{Statistiškai geresnis \\ algoritmas} & \makecell{Atsakymo vidurkio \\ skirtumas ABC-sABC} & p reikšmė \\
  Tikslo funkcija & Statistiškai geresnis & \text{Atsakymo vidurkio} & \text{p reikšmė} \\
   & algoritmas &   \text{skirtumas ABC-sABC} & \\
-Ackley&-&-0.000000&0.0519\\
-Branin&-&-0&1.0000\\
-Camel&-&0.000000&0.4795\\
-Dixon&-&0.689147&0.3820\\
-Griewank&iqabc&-0.000000&0.0196\\
+Ackley&-&-0.000000&0.052\\
+Branin&-&-0&1.000\\
+Camel&-&0.000000&0.480\\
+Dixon&-&0.689147&0.382\\
+Griewank&iqabc&-0.000000&0.020\\
 Rastrigin&-&0&1.0000\\
-Rosenbrock&-&0.001196&0.4165\\
-Schaffer&-&-0.000000&0.9263\\
-Schwefel&-&0.000000&1.0000\\
-Sphere&-&0.000000&0.7499\\
+Rosenbrock&-&0.001196&0.417\\
+Schaffer&-&-0.000000&0.926\\
+Schwefel&-&0.000000&1.000\\
+Sphere&-&0.000000&0.750\\
+
+% Ackley&-&-0.000000&0.0519\\
+% Branin&-&-0&1.0000\\
+% Camel&-&0.000000&0.4795\\
+% Dixon&-&0.689147&0.3820\\
+% Griewank&iqabc&-0.000000&0.0196\\
+% Rastrigin&-&0&1.0000\\
+% Rosenbrock&-&0.001196&0.4165\\
+% Schaffer&-&-0.000000&0.9263\\
+% Schwefel&-&0.000000&1.0000\\
+% Sphere&-&0.000000&0.7499\\
 \end{tabular}
 \end{table}
 
@@ -1044,16 +1065,26 @@ Sphere&-&0.000000&0.7499\\
  Tikslo funkcija & Statistiškai geresnis & \text{Atsakymo vidurkio} & \text{p reikšmė} \\
   & algoritmas &   \text{skirtumas ABC-sABC} & \\
 \hline
-Ackley&-&0.039341&0.8936\\
-Branin&iqsabc&0.000004&0.0350\\
-Camel&-&-0.000000&0.7971\\
-Dixon&iqsabc&394271.844461&0.0300\\
-Griewank&-&-0.002681&0.6435\\
-Rastrigin&-&-0.414406&0.1846\\
-Rosenbrock&-&-0.963613&0.7971\\
-Schaffer&iqsabc&0.000326&0.0350\\
-Schwefel&iqabc&-1188.677962&0.0000\\
-Sphere&-&-1.239227&0.9099\\
+Ackley&-&0.039341&0.894\\
+Branin&iqsabc&0.000004&0.035\\
+Camel&-&-0.000000&0.797\\
+Dixon&iqsabc&394271.844461&0.030\\
+Griewank&-&-0.002681&0.644\\
+Rastrigin&-&-0.414406&0.185\\
+Rosenbrock&-&-0.963613&0.797\\
+Schaffer&iqsabc&0.000326&0.035\\
+Schwefel&iqabc&-1188.677962&0.000\\
+Sphere&-&-1.239227&0.910\\
+% Ackley&-&0.039341&0.8936\\
+% Branin&iqsabc&0.000004&0.0350\\
+% Camel&-&-0.000000&0.7971\\
+% Dixon&iqsabc&394271.844461&0.0300\\
+% Griewank&-&-0.002681&0.6435\\
+% Rastrigin&-&-0.414406&0.1846\\
+% Rosenbrock&-&-0.963613&0.7971\\
+% Schaffer&iqsabc&0.000326&0.0350\\
+% Schwefel&iqabc&-1188.677962&0.0000\\
+% Sphere&-&-1.239227&0.9099\\
 \end{tabular}
 \end{table}
 
@@ -1281,7 +1312,7 @@ Iš gautų rezultatų daromos šios išvados:
 \end{enumerate}
 
 
-Darbo metu sukurtą modelį galima būtų tobulinti literatūros analizės metu išskirtu varozės plitimo tarp šeimų procesu ir išsamesniu klimato įtakos bitėms modeliu. Pritaitkius varozės plitimo procesus būtų galima patobulinti pristatyto modelio bičių migracijos procesą.
+Darbo metu sukurtą modelį galima būtų tobulinti literatūros analizės metu išskirtu varozės plitimo tarp šeimų procesu ir išsamesniu klimato įtakos bitėms modeliu. Pritaikius varozės plitimo procesus būtų galima patobulinti pristatyto modelio bičių migracijos procesą.
 
 % Iš šių procesų bičių migracijos procesas, nors ir įgyvendintas, gali remtis tik šaltinyje pateikta statistine informacija ir nesiremia ilgalaikių stebėjimų empiriniais duomenimis.
 
